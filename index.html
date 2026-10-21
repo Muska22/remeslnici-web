@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="cs" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProfiCraft - Prémiové řemeslné a technické služby</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#0f172a',
+                        cardBg: '#1e293b',
+                        accent: '#f59e0b', // Výrazná žluto-oranžová (Amber)
+                        accentHover: '#d97706',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome ikony -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-darkBg text-gray-100 antialiased selection:bg-accent selection:text-darkBg">
+
+    <!-- Horní notifikační lišta / Kontakt -->
+    <div class="bg-gray-900 border-b border-gray-800 text-xs sm:text-sm py-2 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-6">
+                <span class="flex items-center gap-2 text-gray-400">
+                    <i class="fa-solid fa-phone text-accent"></i> 
+                    <a href="tel:+420777888999" class="hover:text-white transition">+420 777 888 999</a>
+                </span>
+                <span class="hidden md:flex items-center gap-2 text-gray-400">
+                    <i class="fa-solid fa-envelope text-accent"></i> 
+                    <a href="mailto:info@proficraft.cz" class="hover:text-white transition">info@proficraft.cz</a>
+                </span>
+            </div>
+            <div class="flex items-center gap-4 text-gray-400">
+                <span><i class="fa-regular fa-clock text-accent mr-1"></i> Non-stop havarijní servis 24/7</span>
+                <div class="flex gap-3">
+                    <a href="#" class="hover:text-accent transition"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-accent transition"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hlavní navigace -->
+    <nav class="sticky top-0 z-50 bg-darkBg/90 backdrop-blur-md border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo -->
+                <a href="#domu" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-accent flex items-center justify-center text-darkBg font-black text-2xl shadow-lg shadow-accent/20 group-hover:scale-105 transition">
+                        <i class="fa-solid fa-hammer"></i>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight text-white">Profi<span class="text-accent">Craft</span></span>
+                </a>
+
+                <!-- Desktop odkazy -->
+                <div class="hidden lg:flex items-center space-x-8 font-medium">
+                    <a href="#sluzby" class="text-gray-300 hover:text-accent transition">Služby</a>
+                    <a href="#kalkulacka" class="text-gray-300 hover:text-accent transition">Kalkulačka ceny</a>
+                    <a href="#realizace" class="text-gray-300 hover:text-accent transition">Realizace</a>
+                    <a href="#recenze" class="text-gray-300 hover:text-accent transition">Recenze</a>
+                    <a href="#kontakt" class="text-gray-300 hover:text-accent transition">Kontakt</a>
+                </div>
+
+                <!-- CTA Tlačítko -->
+                <div class="hidden sm:flex items-center gap-4">
+                    <a href="#kontakt" class="bg-accent text-darkBg px-6 py-3 rounded-xl font-bold hover:bg-accentHover transition shadow-lg shadow-accent/10 flex items-center gap-2">
+                        <span>Poptat servis</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </a>
+                </div>
+
+                <!-- Mobilní hamburger -->
+                <div class="flex lg:hidden">
+                    <button id="menu-btn" class="text-gray-300 hover:text-white p-2 focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobilní menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-cardBg border-b border-gray-800 px-6 py-6 space-y-4">
+            <a href="#sluzby" class="block text-lg font-medium text-gray-200 hover:text-accent">Služby</a>
+            <a href="#kalkulacka" class="block text-lg font-medium text-gray-200 hover:text-accent">Kalkulačka ceny</a>
+            <a href="#realizace" class="block text-lg font-medium text-gray-200 hover:text-accent">Realizace</a>
+            <a href="#recenze" class="block text-lg font-medium text-gray-200 hover:text-accent">Recenze</a>
+            <a href="#kontakt" class="block text-lg font-medium text-gray-200 hover:text-accent">Kontakt</a>
+            <div class="pt-4 border-t border-gray-700">
+                <a href="#kontakt" class="w-full text-center block bg-accent text-darkBg font-bold py-3 rounded-xl shadow">Poptat servis</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Sekce -->
+    <header id="domu" class="relative overflow-hidden py-24 lg:py-36 bg-gradient-to-b from-darkBg to-gray-900">
+        <div class="absolute inset-0 z-0 opacity-15">
+            <img src="https://images.unsplash.com/photo-1541888946425-d0fbb18f7243?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Stavba a řemeslo" class="w-full h-full object-cover">
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center lg:text-left flex flex-col lg:flex-row items-center gap-12">
+            <div class="lg:w-1/2 space-y-6">
+                <div class="inline-flex items-center gap-2 bg-gray-800/80 border border-gray-700 px-4 py-2 rounded-full text-sm font-semibold text-accent">
+                    <i class="fa-solid fa-shield-halved"></i> Certifikovaní mistři svého oboru
+                </div>
+                <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                    Profesionální řemeslné práce pro <span class="text-accent">váš domov i firmu</span>
+                </h1>
+                <p class="text-lg sm:text-xl text-gray-400 max-w-xl mx-auto lg:mx-0">
+                    Poskytujeme komplexní služby od zednických prací, elektroinstalací až po hodinové manžely. Rychle, precizně a se zárukou.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                    <a href="#kontakt" class="w-full sm:w-auto bg-accent text-darkBg font-bold px-8 py-4 rounded-xl text-center hover:bg-accentHover transition shadow-xl shadow-accent/20">
+                        Nezávazná poptávka
+                    </a>
+                    <a href="#kalkulacka" class="w-full sm:w-auto bg-cardBg border border-gray-700 text-gray-200 font-semibold px-8 py-4 rounded-xl text-center hover:bg-gray-800 transition">
+                        Spočítat orientační cenu
+                    </a>
+                </div>
+                <!-- Mini statistiky -->
+                <div class="grid grid-cols-3 gap-6 pt-8 border-t border-gray-800 text-center lg:text-left">
+                    <div>
+                        <p class="text-3xl font-black text-white">15+</p>
+                        <p class="text-xs text-gray-400 uppercase tracking-wider mt-1">Let zkušeností</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl font-black text-white">1 200+</p>
+                        <p class="text-xs text-gray-400 uppercase tracking-wider mt-1">Hotových projektů</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl font-black text-white">99%</p>
+                        <p class="text-xs text-gray-400 uppercase tracking-wider mt-1">Spokojených klientů</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Hero karta / iluze -->
+            <div class="lg:w-1/2 w-full">
+                <div class="relative bg-cardBg border border-gray-800 p-6 rounded-3xl shadow-2xl overflow-hidden group">
+                    <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-accent/10 rounded-full blur-3xl pointer-events-none"></div>
+                    <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Technik u práce" class="rounded-2xl w-full h-80 object-cover shadow-md group-hover:scale-105 transition duration-500">
+                    <div class="mt-6 flex items-center justify-between">
+                        <div>
+                            <h3 class="font-bold text-lg text-white">Havarijní výjezd připraven</h3>
+                            <p class="text-sm text-gray-400">Reagujeme do 60 minut od nahlášení</p>
+                        </div>
+                        <a href="tel:+420777888999" class="bg-gray-800 hover:bg-gray-700 text-accent font-bold px-4 py-3 rounded-xl border border-gray-700 transition flex items-center gap-2">
+                            <i class="fa-solid fa-phone-volume"></i> Zavolat
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Služby Sekce -->
+    <section id="sluzby" class="py-24 bg-cardBg/40 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-accent font-bold text-sm tracking-wider uppercase bg-accent/10 px-4 py-1.5 rounded-full border border-accent/20">Naše odbornost</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-4 mb-4">Komplexní řemeslné a technické práce</h2>
+                <p class="text-gray-400 text-lg">Zajistíme kompletní servis pro váš byt, dům nebo komerční prostory na jednom místě.</p>
+            </div>
+
+            <!-- Grid služeb v moderních kartách -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Služba 1 -->
+                <div class="bg-cardBg border border-gray-800 rounded-2xl p-8 hover:border-accent/50 transition duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-gray-800 rounded-xl text-accent flex items-center justify-center text-2xl mb-6 group-hover:bg-accent group-hover:text-darkBg transition shadow">
+                            <i class="fa-solid fa-trowel-bricks"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Zednické práce a rekonstrukce</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            Rekonstrukce bytových jader, zdění příček, omítky, štuky, obklady, dlažby a kompletní stavební úpravy na klíč.
+                        </p>
+                    </div>
+                    <a href="#kontakt" class="inline-flex items-center text-sm font-semibold text-accent hover:text-white transition gap-2">
+                        <span>Poptat zedníka</span> <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Služba 2 -->
+                <div class="bg-cardBg border border-gray-800 rounded-2xl p-8 hover:border-accent/50 transition duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-gray-800 rounded-xl text-accent flex items-center justify-center text-2xl mb-6 group-hover:bg-accent group-hover:text-darkBg transition shadow">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Elektroinstalace a revize</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            Nové rozvody elektřiny, výměna jističů, zapojení spotřebičů, LED osvětlení a pravidelné výchozí i provozní revize.
+                        </p>
+                    </div>
+                    <a href="#kontakt" class="inline-flex items-center text-sm font-semibold text-accent hover:text-white transition gap-2">
+                        <span>Poptat elektrikáře</span> <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Služba 3 -->
+                <div class="bg-cardBg border border-gray-800 rounded-2xl p-8 hover:border-accent/50 transition duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-gray-800 rounded-xl text-accent flex items-center justify-center text-2xl mb-6 group-hover:bg-accent group-hover:text-darkBg transition shadow">
+                            <i class="fa-solid fa-faucet-drip"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Instalatérství a topenářství</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            Opravy a rozvody vody, odpadů, montáž sanity, topných těles, podlahového vytápění a řešení havárií.
+                        </p>
+                    </div>
+                    <a href="#kontakt" class="inline-flex items-center text-sm font-semibold text-accent hover:text-white transition gap-2">
+                        <span>Poptat instalatéra</span> <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Služba 4 -->
+                <div class="bg-cardBg border border-gray-800 rounded-2xl p-8 hover:border-accent/50 transition duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-gray-800 rounded-xl text-accent flex items-center justify-center text-2xl mb-6 group-hover:bg-accent group-hover:text-darkBg transition shadow">
+                            <i class="fa-solid fa-hammer"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Hodinový manžel</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            Vrtání do zdí, sestavování nábytku, zavěšování obrazů a garnýží, výměna zámků a drobná údržba domácnosti.
+                        </p>
+                    </div>
+                    <a href="#kontakt" class="inline-flex items-center text-sm font-semibold text-accent hover:text-white transition gap-2">
+                        <span>Objednat manžela</span> <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Služba 5 -->
+                <div class="bg-cardBg border border-gray-800 rounded-2xl p-8 hover:border-accent/50 transition duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-gray-800 rounded-xl text-accent flex items-center justify-center text-2xl mb-6 group-hover:bg-accent group-hover:text-darkBg transition shadow">
+                            <i class="fa-solid fa-paint-roller"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Malování a sádrokartony</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            Malování interiérů, stříkané omítky, montáž sádrokartonových podhledů, příček a izolační práce.
+                        </p>
+                    </div>
+                    <a href="#kontakt" class="inline-flex items-center text-sm font-semibold text-accent hover:text-white transition gap-2">
+                        <span>Poptat malíře</span> <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Služba 6 -->
+                <div class="bg-cardBg border border-gray-800 rounded-2xl p-8 hover:border-accent/50 transition duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-gray-800 rounded-xl text-accent flex items-center justify-center text-2xl mb-6 group-hover:bg-accent group-hover:text-darkBg transition shadow">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Havarijní výjezdy 24/7</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            Prasklé potrubí, zkrat v elektrice, zabouchnuté dveře nebo jiné akutní havárie. Vyjíždíme okamžitě.
+                        </p>
+                    </div>
+                    <a href="tel:+420777888999" class="inline-flex items-center text-sm font-semibold text-accent hover:text-white transition gap-2">
+                        <span>Zavolat havárie</span> <i class="fa-solid fa-phone"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kalkulačka orientační ceny -->
+    <section id="kalkulacka" class="py-24 bg-darkBg border-t border-gray-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-accent font-bold text-sm tracking-wider uppercase bg-accent/10 px-4 py-1.5 rounded-full border border-accent/20">Cenový odhad</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-4 mb-4">Interaktivní kalkulačka ceny</h2>
+                <p class="text-gray-400">Vyberte si typ práce a zadejte rozsah pro orientační výpočet nákladů.</p>
+            </div>
+
+            <div class="bg-cardBg border border-gray-800 p-8 sm:p-10 rounded-3xl shadow-2xl">
+                <div class="space-y-8">
+                    <!-- Výběr typu prací -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-300 mb-3">1. Vyberte obor / službu</label>
+                        <select id="calc-service" class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent transition">
+                            <option value="zednik" data-price="450">Zednické práce (hodinová sazba / m2)</option>
+                            <option value="elektro" data-price="550">Elektroinstalace (hodinová sazba)</option>
+                            <option value="instalatér" data-price="500">Instalatérství (hodinová sazba)</option>
+                            <option value="manzel" data-price="380">Hodinový manžel (hodinová sazba)</option>
+                            <option value="malir" data-price="150">Malování (cena za m2)</option>
+                        </select>
+                    </div>
+
+                    <!-- Zadání rozsahu -->
+                    <div>
+                        <div class="flex justify-between items-center mb-3">
+                            <label class="text-sm font-semibold text-gray-300" id="range-label">2. Odhadovaný rozsah (hodiny / m2):</label>
+                            <span id="range-value" class="text-accent font-bold text-lg bg-accent/10 px-3 py-1 rounded-lg border border-accent/20">10</span>
+                        </div>
+                        <input type="range" id="calc-amount" min="1" max="100" value="10" class="w-full h-2 bg-gray-900 rounded-lg appearance-none cursor-pointer accent-accent">
+                    </div>
+
+                    <!-- Doplňkové příplatky -->
+                    <div class="border-t border-gray-800 pt-6">
+                        <label class="block text-sm font-semibold text-gray-300 mb-3">3. Doplňkové požadavky</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <label class="flex items-center gap-3 bg-gray-900/50 p-4 rounded-xl border border-gray-700/50 cursor-pointer hover:border-accent transition">
+                                <input type="checkbox" id="express-fee" value="1000" class="w-5 h-5 accent-accent rounded">
+                                <span class="text-sm text-gray-300">Expresní zásah do 24 hodin (+1 000 Kč)</span>
+                            </label>
+                            <label class="flex items-center gap-3 bg-gray-900/50 p-4 rounded-xl border border-gray-700/50 cursor-pointer hover:border-accent transition">
+                                <input type="checkbox" id="material-fee" value="1500" class="w-5 h-5 accent-accent rounded">
+                                <span class="text-sm text-gray-300">Zajištění a dovoz materiálu (+1 500 Kč)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Výsledek -->
+                    <div class="bg-gray-900 border border-gray-800 p-6 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div>
+                            <p class="text-xs uppercase tracking-wider text-gray-400 font-semibold">Orientační celková cena:</p>
+                            <p class="text-3xl sm:text-4xl font-black text-accent mt-1" id="total-price">4 500 Kč</p>
+                            <p class="text-xs text-gray-500 mt-1">*Cena je orientační, přesnou kalkulaci zašleme po upřesnění detailů.</p>
+                        </div>
+                        <a href="#kontakt" class="w-full sm:w-auto bg-accent text-darkBg font-bold px-6 py-3 rounded-xl hover:bg-accentHover transition text-center shadow">
+                            Odeslat tuto poptávku
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Referenční galerie s filtrem -->
+    <section id="realizace" class="py-24 bg-cardBg/40 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-accent font-bold text-sm tracking-wider uppercase bg-accent/10 px-4 py-1.5 rounded-full border border-accent/20">Portfolio</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-4 mb-4">Naše nedávné realizace</h2>
+                <p class="text-gray-400">Prohlédněte si ukázky naší odvedené práce v oblasti rekonstrukcí a technických instalací.</p>
+            </div>
+
+            <!-- Filtrovací tlačítka -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <button class="filter-btn bg-accent text-darkBg font-bold px-5 py-2 rounded-xl text-sm transition shadow" data-filter="all">Všechny práce</button>
+                <button class="filter-btn bg-gray-800 hover:bg-gray-700 text-gray-300 font-semibold px-5 py-2 rounded-xl text-sm transition" data-filter="zednik">Zedničina</button>
+                <button class="filter-btn bg-gray-800 hover:bg-gray-700 text-gray-300 font-semibold px-5 py-2 rounded-xl text-sm transition" data-filter="elektro">Elektro</button>
+                <button class="filter-btn bg-gray-800 hover:bg-gray-700 text-gray-300 font-semibold px-5 py-2 rounded-xl text-sm transition" data-filter="instalatér">Instalatérství</button>
+            </div>
+
+            <!-- Grid položek galerie -->
+            <div id="gallery-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Položka 1 -->
+                <div class="gallery-item bg-cardBg border border-gray-800 rounded-2xl overflow-hidden shadow-lg group" data-category="zednik">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kompletní rekonstrukce koupelny" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <span class="absolute top-4 left-4 bg-darkBg/80 backdrop-blur text-accent text-xs font-bold px-3 py-1 rounded-lg border border-gray-700">Zednické práce</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg text-white mb-2">Kompletní rekonstrukce koupelny</h3>
+                        <p class="text-gray-400 text-sm">Nové obklady, dlažba, rozvody vody a zděné jádro v Praze.</p>
+                    </div>
+                </div>
+
+                <!-- Položka 2 -->
+                <div class="gallery-item bg-cardBg border border-gray-800 rounded-2xl overflow-hidden shadow-lg group" data-category="elektro">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Nové rozvody v rodinném domě" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <span class="absolute top-4 left-4 bg-darkBg/80 backdrop-blur text-accent text-xs font-bold px-3 py-1 rounded-lg border border-gray-700">Elektroinstalace</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg text-white mb-2">Nové rozvody v rodinném domě</h3>
+                        <p class="text-gray-400 text-sm">Kompletní elektroinstalace, rozvaděč a chytré osvětlení.</p>
+                    </div>
+                </div>
+
+                <!-- Položka 3 -->
+                <div class="gallery-item bg-cardBg border border-gray-800 rounded-2xl overflow-hidden shadow-lg group" data-category="instalatér">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1542013936693-84d9f69403d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Instalace tepelného čerpadla" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <span class="absolute top-4 left-4 bg-darkBg/80 backdrop-blur text-accent text-xs font-bold px-3 py-1 rounded-lg border border-gray-700">Topenářství</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg text-white mb-2">Instalace tepelného čerpadla</h3>
+                        <p class="text-gray-400 text-sm">Montáž ústředního topení a zapojení ekologického zdroje vytápění.</p>
+                    </div>
+                </div>
+
+                <!-- Položka 4 -->
+                <div class="gallery-item bg-cardBg border border-gray-800 rounded-2xl overflow-hidden shadow-lg group" data-category="zednik">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Zděná kuchyňská linka" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <span class="absolute top-4 left-4 bg-darkBg/80 backdrop-blur text-accent text-xs font-bold px-3 py-1 rounded-lg border border-gray-700">Zednické práce</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg text-white mb-2">Stavba příček a sádrokartony</h3>
+                        <p class="text-gray-400 text-sm">Rozdělení velkého prostoru na moderní kanceláře.</p>
+                    </div>
+                </div>
+
+                <!-- Položka 5 -->
+                <div class="gallery-item bg-cardBg border border-gray-800 rounded-2xl overflow-hidden shadow-lg group" data-category="elektro">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Revize a zapojení rozvaděče" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <span class="absolute top-4 left-4 bg-darkBg/80 backdrop-blur text-accent text-xs font-bold px-3 py-1 rounded-lg border border-gray-700">Elektroinstalace</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg text-white mb-2">Revize a zapojení rozvaděče</h3>
+                        <p class="text-gray-400 text-sm">Bezpečnostní kontrola a výměna starých jističů za nové.</p>
+                    </div>
+                </div>
+
+                <!-- Položka 6 -->
+                <div class="gallery-item bg-cardBg border border-gray-800 rounded-2xl overflow-hidden shadow-lg group" data-category="instalatér">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Výměna odpadního potrubí" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <span class="absolute top-4 left-4 bg-darkBg/80 backdrop-blur text-accent text-xs font-bold px-3 py-1 rounded-lg border border-gray-700">Instalatérství</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg text-white mb-2">Výměna odpadního potrubí</h3>
+                        <p class="text-gray-400 text-sm">Sanace starých litinových rozvodů v činžovním domě.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekce recenzí -->
+    <section id="recenze" class="py-24 bg-darkBg border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-accent font-bold text-sm tracking-wider uppercase bg-accent/10 px-4 py-1.5 rounded-full border border-accent/20">Reference</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-4 mb-4">Co o nás říkají zákazníci</h2>
+                <p class="text-gray-400">Přečtěte si hodnocení od lidí, kterým jsme pomohli s opravou či rekonstrukcí.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Recenze 1 -->
+                <div class="bg-cardBg border border-gray-800 p-8 rounded-3xl flex flex-col justify-between shadow-lg">
+                    <div>
+                        <div class="flex text-accent gap-1 mb-4 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed italic mb-6">
+                            "Naprostá spokojenost! Potřebovali jsme urgentně vyřešit havárii vody pod dřezem. Instalatér dorazil do 45 minut od zavolání a za hodinu bylo po problému. Skvělá domluva a férová cena."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-4 border-t border-gray-800">
+                        <div class="w-12 h-12 rounded-full bg-accent text-darkBg font-black flex items-center justify-center text-lg">
+                            PN
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white">Petr Novotný</h4>
+                            <p class="text-xs text-gray-400">Praha 4</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recenze 2 -->
+                <div class="bg-cardBg border border-gray-800 p-8 rounded-3xl flex flex-col justify-between shadow-lg">
+                    <div>
+                        <div class="flex text-accent gap-1 mb-4 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed italic mb-6">
+                            "Firma ProfiCraft nám dělala kompletní elektroinstalaci v novostavbě. Vše proběhlo přesně podle domluveného harmonogramu, revize proběhla bez jediného zádrhele. Doporučuji!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-4 border-t border-gray-800">
+                        <div class="w-12 h-12 rounded-full bg-accent text-darkBg font-black flex items-center justify-center text-lg">
+                            MK
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white">Marie Kopecká</h4>
+                            <p class="text-xs text-gray-400">Brno - venkov</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recenze 3 -->
+                <div class="bg-cardBg border border-gray-800 p-8 rounded-3xl flex flex-col justify-between shadow-lg">
+                    <div>
+                        <div class="flex text-accent gap-1 mb-4 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed italic mb-6">
+                            "Využila jsem služby hodinového manžela na sestavení nábytku a vrtání poliček. Pán byl neuvěřitelně šikovný, čistotný a po práci po sobě naprosto uklidil. Určitě využiji znovu."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-4 border-t border-gray-800">
+                        <div class="w-12 h-12 rounded-full bg-accent text-darkBg font-black flex items-center justify-center text-lg">
+                            JS
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white">Jana Svobodová</h4>
+                            <p class="text-xs text-gray-400">Plzeň</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontaktní formulář -->
+    <section id="kontakt" class="py-24 bg-cardBg/40 border-t border-gray-800 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-16 bg-cardBg border border-gray-800 rounded-3xl overflow-hidden shadow-2xl p-8 sm:p-12">
+                <!-- Kontaktní informace -->
+                <div class="lg:w-5/12 space-y-8">
+                    <div>
+                        <span class="text-accent font-bold text-sm tracking-wider uppercase bg-accent/10 px-4 py-1.5 rounded-full border border-accent/20">Spojte se s námi</span>
+                        <h2 class="text-3xl font-extrabold text-white mt-4 mb-3">Máte projekt nebo potřebujete pomoc?</h2>
+                        <p class="text-gray-400 text-sm leading-relaxed">Napište nám pomocí formuláře nebo zavolejte na naši linku. Ozveme se vám zpět do 2 hodin.</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-gray-900 border border-gray-700 rounded-xl flex items-center justify-center text-accent text-xl flex-shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-400 uppercase font-semibold">Telefonní linka</p>
+                                <a href="tel:+420777888999" class="text-lg font-bold text-white hover:text-accent transition">+420 777 888 999</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-gray-900 border border-gray-700 rounded-xl flex items-center justify-center text-accent text-xl flex-shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-400 uppercase font-semibold">E-mailová adresa</p>
+                                <a href="mailto:info@proficraft.cz" class="text-lg font-bold text-white hover:text-accent transition">info@proficraft.cz</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-gray-900 border border-gray-700 rounded-xl flex items-center justify-center text-accent text-xl flex-shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-400 uppercase font-semibold">Hlavní působnost</p>
+                                <p class="text-lg font-bold text-white">Praha, Středočeský kraj a okolí</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulář -->
+                <div class="lg:w-7/12">
+                    <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-2">Jméno a příjmení *</label>
+                                <input type="text" id="form-name" required class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent transition" placeholder="Jan Novák">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-2">Telefonní číslo *</label>
+                                <input type="tel" id="form-phone" required class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent transition" placeholder="+420 123 456 789">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Vyberte službu</label>
+                            <select id="form-service" class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent transition">
+                                <option>Zednické práce</option>
+                                <option>Elektroinstalace</option>
+                                <option>Instalatérství</option>
+                                <option>Hodinový manžel</option>
+                                <option>Malování</option>
+                                <option>Havarijní výjezd</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Zpráva / Popis požadavku *</label>
+                            <textarea id="form-msg" rows="4" required class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent transition" placeholder="Napište nám podrobnosti k vaší poptávce..."></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-accent text-darkBg font-bold py-4 rounded-xl hover:bg-accentHover transition shadow-lg shadow-accent/20 flex items-center justify-center gap-2">
+                            <span>Odeslat nezávaznou poptávku</span>
+                            <i class="fa-solid fa-paper-plane text-sm"></i>
+                        </button>
+
+                        <div id="form-success-box" class="hidden p-4 bg-green-900/40 border border-green-500 rounded-xl text-green-300 text-center text-sm font-semibold">
+                            <i class="fa-solid fa-circle-check mr-2"></i> Děkujeme! Vaše poptávka byla úspěšně odeslána. Ozveme se vám do 2 hodin.
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Patička -->
+    <footer class="bg-gray-950 text-gray-400 py-12 border-t border-gray-800 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-accent flex items-center justify-center text-darkBg font-bold">
+                    <i class="fa-solid fa-hammer"></i>
+                </div>
+                <span class="text-white font-bold text-base">ProfiCraft</span>
+            </div>
+            <p>&copy; 2026 ProfiCraft. Všechna práva vyhrazena. Moderní řemeslné a technické služby.</p>
+            <div class="flex space-x-6">
+                <a href="#" class="hover:text-accent transition">Ochrana údajů</a>
+                <a href="#" class="hover:text-accent transition">Obchodní podmínky</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript pro interaktivitu -->
+    <script>
+        // Mobilní menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Zavření mobilního menu po kliknutí na odkaz
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Kalkulačka logiky
+        const calcService = document.getElementById('calc-service');
+        const calcAmount = document.getElementById('calc-amount');
+        const rangeLabel = document.getElementById('range-label');
+        const rangeValue = document.getElementById('range-value');
+        const expressFee = document.getElementById('express-fee');
+        const materialFee = document.getElementById('material-fee');
+        const totalPrice = document.getElementById('total-price');
+
+        function updateCalculator() {
+            const selectedOption = calcService.options[calcService.selectedIndex];
+            const baseRate = parseInt(selectedOption.getAttribute('data-price')) || 500;
+            const amount = parseInt(calcAmount.value) || 1;
+
+            // Změna popisku podle jednotky
+            if (calcService.value === 'zednik' || calcService.value === 'malir') {
+                rangeLabel.textContent = '2. Odhadovaný rozsah (m2):';
+            } else {
+                rangeLabel.textContent = '2. Odhadovaný rozsah (hodiny):';
+            }
+            rangeValue.textContent = amount;
+
+            let total = baseRate * amount;
+            if (expressFee.checked) total += parseInt(expressFee.value);
+            if (materialFee.checked) total += parseInt(materialFee.value);
+
+            // Formátování ceny s mezerami
+            totalPrice.textContent = total.toLocaleString('cs-CZ') + ' Kč';
+        }
+
+        calcService.addEventListener('change', updateCalculator);
+        calcAmount.addEventListener('input', updateCalculator);
+        expressFee.addEventListener('change', updateCalculator);
+        materialFee.addEventListener('change', updateCalculator);
+
+        // Inicializace kalkulačky
+        updateCalculator();
+
+        // Galerie filtrů
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Odstranění aktivní třídy ze všech tlačítek
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-accent', 'text-darkBg', 'font-bold');
+                    b.classList.add('bg-gray-800', 'text-gray-300', 'font-semibold');
+                });
+                // Přidání aktivní třídy pro kliknuté tlačítko
+                btn.classList.remove('bg-gray-800', 'text-gray-300', 'font-semibold');
+                btn.classList.add('bg-accent', 'text-darkBg', 'font-bold');
+
+                const filter = btn.getAttribute('data-filter');
+
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Odeslání formuláře
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const successBox = document.getElementById('form-success-box');
+            successBox.classList.remove('hidden');
+            
+            // Vymazání polí formuláře
+            document.getElementById('form-name').value = '';
+            document.getElementById('form-phone').value = '';
+            document.getElementById('form-msg').value = '';
+
+            setTimeout(() => {
+                successBox.classList.add('hidden');
+            }, 6000);
+        }
+    </script>
+</body>
+</html>
+```
+eof
+
+***
+
+### Shrnutí vygenerovaného webu:
+* **Prémiový design:** Tmavě šedá barevná paleta (`#0f172a`, `#1e293b`) s výraznými žluto-oranžovými akcenty (`Amber`).
+* **Služby:** Přehledně strukturované v moderních kartách s ikonami pro zedníky, elektrikáře, instalatéry, hodinové manžely, malíře a havarijní servis.
+* **Cenová kalkulačka:** Dynamický výpočet odhadu ceny podle typu prací, rozsahu a doplňků (expresní zásah, materiál).
+* **Filtrovatelná galerie realizací:** Umožňuje uživateli filtrovat ukázky prací podle oborů jedním kliknutím.
+* **Zákaznické recenze & Formulář:** Kompletní sekce pro budování důvěry a kontaktní formulář s interaktivní zprávou o odeslání.
